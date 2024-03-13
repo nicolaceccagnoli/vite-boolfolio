@@ -37,7 +37,7 @@ import ProjectCard from './ProjectCard.vue';
                     this.currentPage++;
 
                     console.log('currentPage: ', this.currentPage);
-                    
+
                     this.getProjects(this.currentPage);
                 }
             },
