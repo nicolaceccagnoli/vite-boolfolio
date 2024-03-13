@@ -1,5 +1,6 @@
 <script >
 import axios from 'axios';
+import ProjectCard from './ProjectCard.vue';
 
     export default {
         data() {
@@ -7,6 +8,9 @@ import axios from 'axios';
                 // Definisco un array vuoto dove inserirò i risultati dell'API
                 projects: []
             };
+        },
+        components: {
+            ProjectCard
         },
         methods: {
 
@@ -24,6 +28,7 @@ import axios from 'axios';
 </script>
 
 <template>
+
     <main>
 
         <h1 class="text-center">
@@ -31,35 +36,12 @@ import axios from 'axios';
         </h1>
 
         <div class="row g-0 justify-content-around flex-wrap">
-            <div class="col-3 single-project" v-for="project in projects" :key="project.id">
-
-                <h2 class="text-center text-primary">
-                    {{ project.title }}
-                </h2>
-
-               <h5 class="my-3 text-success">
-                    Linguaggio: {{ project.type.title }}
-               </h5>
-
-               <div class="row">
-                    <div class="col-12">
-                        Tecnologie: 
-                        <span v-for="technology in project.technologies" :key="technology.id" class="badge rounded-pill text-bg-primary">
-                            {{ technology.title }}
-                        </span>
-                    </div>
-               </div>
-            </div>
+            <ProjectCard v-for="singleProject in projects" :key="singleProject.id" :project="singleProject"/>
         </div>
-
+        
     </main>
+    
 </template>
 
 <style lang="scss" scoped>
-    .single-project {
-        border: 2px solid black;
-        border-radius: 5px;
-        padding: 15px;
-        margin: 20px auto;
-    }
 </style>
