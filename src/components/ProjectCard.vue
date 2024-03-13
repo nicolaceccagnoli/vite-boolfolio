@@ -45,6 +45,7 @@
         border-radius: 5px;
         padding: 15px;
         margin: 20px auto;
+        height: 400px;
     }
 
 </style>
