@@ -9,7 +9,8 @@
 
         },
         props: {   
-            project: Object
+            project: Object,
+            api: String
         }
 
     }
@@ -24,8 +25,13 @@
             </h2>
 
             <h5 class="my-3 text-success">
-                Linguaggio: {{ project.type.title }}
+                Linguaggio: {{ project.type?.title ?? 'NULL' }}
+                <!-- Linguaggio: {{ project.type ? project.type.title : 'NULL' }} -->
             </h5>
+
+            <div v-if="project.cover_img != null">
+                <img :src="'http://127.0.0.1:8000/storage/' + project.cover_img" :alt="project.title">
+            </div>
 
             <div class="row">
                 <div class="col-12">
@@ -35,6 +41,7 @@
                     </span>
                 </div>
             </div>
+
         </div>
     
 </template>
@@ -46,6 +53,10 @@
         padding: 15px;
         margin: 20px auto;
         height: 400px;
+
+        img {
+            width: 100%;
+        }
     }
 
 </style>

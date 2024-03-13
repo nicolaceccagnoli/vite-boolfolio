@@ -20,7 +20,7 @@ import ProjectCard from './ProjectCard.vue';
             getProjects(page) {
                 axios.get('http://127.0.0.1:8000/api/projects', {
                         params: {
-                            page: page
+                            page
                         }
                     })
                     .then(res => {
@@ -33,12 +33,17 @@ import ProjectCard from './ProjectCard.vue';
             },
             nextPage() {
                 if (this.currentPage < this.lastPage) {
-                    this.getProjects(this.currentPage + 1);
+
+                    this.currentPage++;
+
+                    console.log('currentPage: ', this.currentPage);
+                    
+                    this.getProjects(this.currentPage);
                 }
             },
             prevPage() {
                 if (this.currentPage > 1) {
-                     this.getProjects(this.currentPage - 1);
+                     this.getProjects(--this.currentPage);
                 }
             }
 
@@ -63,7 +68,7 @@ import ProjectCard from './ProjectCard.vue';
         </h3>
 
         <div class="row g-0 justify-content-around flex-wrap">
-            <ProjectCard v-for="singleProject in projects" :key="singleProject.id" :project="singleProject"/>
+            <ProjectCard v-for="singleProject in projects" :key="singleProject.id" :project="singleProject" />
         </div>
 
         <nav>
