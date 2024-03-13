@@ -14,25 +14,7 @@
 
 <template>
     <header>
-        <nav>
-            <ul>
-                <li>
-                    <router-link :to="{ name: 'home' }" class="classe_css">
-                        Home page
-                    </router-link>
-                </li>
-                <li>
-                    <router-link :to="{ name: 'about' }" class="classe_css">
-                        Chi siamo
-                    </router-link>
-                </li>
-                <li>
-                    <router-link :to="{ name: 'contact' }" class="classe_css">
-                        Contatti
-                    </router-link>
-                </li>
-            </ul>
-        </nav>
+        HEADER 
     </header>
 </template>
 
