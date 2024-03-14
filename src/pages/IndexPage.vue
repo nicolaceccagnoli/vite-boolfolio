@@ -1,10 +1,8 @@
 <script >
-import axios from 'axios';
-// import { RouterView } from 'vue-router';
-
     export default {
         data() {
             return {
+                message: 'Vite Boolfolio'
             };
         },
         methods: {
@@ -17,12 +15,15 @@ import axios from 'axios';
 
 <template>
 
-    <main>
-        <!-- Importo la componente del routerview -->
-        <router-view></router-view>
-    </main>
-    
+    <h1>
+        {{ message }}
+    </h1>
+
 </template>
 
 <style lang="scss" scoped>
+h1 {
+    text-align: center;
+    margin-top: 100px;
+}
 </style>

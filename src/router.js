@@ -3,12 +3,8 @@
 
 import { createRouter, createWebHistory } from "vue-router"; 
 
-import HomePage from './pages/HomePage.vue';
-import AboutPage from './pages/AboutPage.vue';
-import ContactPage from './pages/ContactPage.vue';
-import NotFoundPage from './pages/NotFoundPage.vue';
-import ProductPage from './pages/ProductPage.vue';
-
+import IndexPage from './pages/IndexPage.vue';
+import ProjectPage from './pages/ProjectPage.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -16,29 +12,13 @@ const router = createRouter({
         {
             path: '/',
             name: 'home',
-            component: HomePage
+            component: IndexPage
         },
         {
-            path: '/chi-siamo',
-            name: 'about',
-            component: AboutPage
-        },
-        {
-            path: '/contatti',
-            name: 'contact',
-            component: ContactPage
-        },
-        {
-            path: '/prodotti/:id/vedi',
-            name: 'prodotti',
-            component: ProductPage
-        },
-        {
-            path: '/:pathMatch(.*)*',
-            name: 'not-found',
-            component: NotFoundPage
-        },
-
+            path: '/blog',
+            name: 'projects.index',
+            component: ProjectPage
+        }
     ]
 });
 
