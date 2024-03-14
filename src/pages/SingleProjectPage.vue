@@ -1,24 +1,32 @@
 <script >
-
+import axios from 'axios';
     export default {
         data() {
             return {
+                project: null
             };
         },
         methods: {
+            
+            getProject() {
+                axios.get('http://127.0.0.1:8000/api/projects/' + this.$route.params.slug)
+                    .then(res => {
+                        console.log(res.data);
+
+                        this.project = res.data.results;
+                    })
+            },
 
         },
-        props: {   
-            project: Object,
-            api: String
+        created() {
+            this.getProject();
         }
-
     }
 </script>
 
 <template>
 
-        <div class="col-3 single-project">
+        <div v-if="project != null" class="col-3 single-project">
 
             <h2 class="text-center text-primary">
                 {{ project.title }}
@@ -43,9 +51,9 @@
             </div>
 
             <div class="link-container">
-                <router-link :to=" { name: 'projects.show', params: { slug: project.slug } } ">
-                    <span>Vai al progetto</span>            
-                </router-link>
+                <a href="#">
+                    Vai al progetto
+                </a>
             </div>
 
         </div>
@@ -62,21 +70,6 @@
 
         img {
             width: 100%;
-        }
-
-        .link-container {
-            margin-top: 12px;
-
-            span {
-                display: inline-block;
-                background-color: #0288A9;
-                color: white;
-                padding: 4px 8px;
-                cursor: pointer;
-                border-radius: 5px;
-                text-decoration: none;
-                font-weight: bold;
-            }
         }
     }
 

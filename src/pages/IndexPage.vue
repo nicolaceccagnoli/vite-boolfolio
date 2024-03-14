@@ -24,6 +24,6 @@
 <style lang="scss" scoped>
 h1 {
     text-align: center;
-    margin-top: 100px;
+    margin: 100px 0;
 }
 </style>

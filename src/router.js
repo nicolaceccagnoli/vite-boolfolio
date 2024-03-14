@@ -5,6 +5,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import IndexPage from './pages/IndexPage.vue';
 import ProjectPage from './pages/ProjectPage.vue';
+import SingleProjectPage from './pages/SingleProjectPage.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -18,6 +19,11 @@ const router = createRouter({
             path: '/blog',
             name: 'projects.index',
             component: ProjectPage
+        },
+        {
+            path: '/blog/:slug',
+            name: 'projects.show',
+            component: SingleProjectPage
         }
     ]
 });
