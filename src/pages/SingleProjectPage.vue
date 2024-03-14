@@ -13,8 +13,16 @@ import axios from 'axios';
                     .then(res => {
                         console.log(res.data);
 
-                        this.project = res.data.results;
+                        // Se la chiamata ha buon fine
+                        if (res.data.success) {
+                            // Si vedrà il singolo progetto
+                            this.project = res.data.results;
+                        } else {
+                            // Altrimenti restituiamo la pagina d'errore
+                            this.$router.push({ name: 'not-found' });
+                        }
                     })
+
             },
 
         },
@@ -49,13 +57,6 @@ import axios from 'axios';
                     </span>
                 </div>
             </div>
-
-            <div class="link-container">
-                <a href="#">
-                    Vai al progetto
-                </a>
-            </div>
-
         </div>
     
 </template>
