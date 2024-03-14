@@ -30,7 +30,7 @@
             </h5>
 
             <div v-if="project.cover_img != null">
-                <img :src="'http://127.0.0.1:8000/storage/' + project.cover_img" :alt="project.title">
+                <img :src="project.full_cover_img" :alt="project.title">
             </div>
 
             <div class="row">
