@@ -7,6 +7,7 @@ import IndexPage from './pages/IndexPage.vue';
 import ProjectPage from './pages/ProjectPage.vue';
 import SingleProjectPage from './pages/SingleProjectPage.vue';
 import NotFoundPage from './pages/NotFoundPage.vue';
+import ContactPage from './pages/ContactPage.vue';
 
 const router = createRouter({
     history: createWebHistory(),
@@ -31,7 +32,11 @@ const router = createRouter({
             name: 'not-found',
             component: NotFoundPage
         },
-
+        {
+            path: '/contacts',
+            name: 'contacts',
+            component: ContactPage
+        }
     ]
 });
 

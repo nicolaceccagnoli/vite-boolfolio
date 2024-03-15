@@ -2,7 +2,20 @@
     export default {
         data() {
             return {
-
+                links: [
+                    {
+                        name: 'Home',
+                        url: 'home'
+                    },                    
+                    {
+                        name: 'Progetti',
+                        url: 'projects.index'
+                    },
+                    {
+                        name: 'Contatti',
+                        url: 'contacts'
+                    },
+                ]
             };
         },
         methods: {
@@ -22,14 +35,9 @@
 
             <nav>
                 <ul>
-                    <li>
-                        <router-link :to="{ name: 'home' }" class="classe_css">
-                           <span>Home</span> 
-                        </router-link>
-                    </li>
-                    <li>
-                        <router-link :to="{ name: 'projects.index' }" class="classe_css">
-                            <span>Blog</span>  
+                    <li v-for="link in links">
+                        <router-link :to="{ name: link.url }" class="classe_css">
+                           <span>{{ link.name }}</span> 
                         </router-link>
                     </li>
                 </ul>
