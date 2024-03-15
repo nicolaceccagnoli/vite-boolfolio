@@ -1,4 +1,6 @@
 <script >
+import axios from 'axios';
+
     export default {
         data() {
             return {
@@ -31,7 +33,15 @@
                     &&
                     this.accepted 
                 ) {
-                    // axios.post('http://127.0.0.1:8000/api/projects')
+                    axios.post('http://127.0.0.1:8000/api/contacts', {
+                        name: this.name,
+                        email: this.email,
+                        message: this.message,
+                        accepted: this.accepted
+                    })
+                         .then(res => {
+                            console.log('RISPOSTA API', res.data)
+                         })
                 }
                 else {
                     this.alert = true
@@ -84,7 +94,7 @@
 </template>
 
 <style lang="scss" scoped>
-    #form-containe, .card {
+    #form-container, .card {
         margin: 100px 0;
     }
 </style>
