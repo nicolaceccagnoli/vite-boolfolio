@@ -8,7 +8,8 @@ import axios from 'axios';
                 email: '',
                 message: '',
                 accepted: false,
-                alert: false
+                alert: false,
+                messageSent: false
             };
         },
         methods: {
@@ -41,6 +42,10 @@ import axios from 'axios';
                         })
                          .then(res => {
                             console.log('RISPOSTA API', res.data);
+
+                            if (res.data.success) {
+                                this.messageSent = true;
+                            }
                         })
                         .catch(err => {
                             console.log('ERRORE AXIOS', err);
@@ -94,6 +99,12 @@ import axios from 'axios';
                 Dati inseriti non correttamente
             </div>
         </div>
+        <div v-show="messageSent" class="card mt-5">
+            <div class="card-body text-success">
+                Messaggio inviato correttametne
+            </div>
+        </div>
+
     </div>
 
 </template>
