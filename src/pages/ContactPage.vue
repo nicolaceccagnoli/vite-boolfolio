@@ -34,17 +34,22 @@ import axios from 'axios';
                     this.accepted 
                 ) {
                     axios.post('http://127.0.0.1:8000/api/contacts', {
-                        name: this.name,
-                        email: this.email,
-                        message: this.message,
-                        accepted: this.accepted
-                    })
+                            name: this.name,
+                            email: this.email,
+                            message: this.message,
+                            accepted: this.accepted
+                        })
                          .then(res => {
-                            console.log('RISPOSTA API', res.data)
-                         })
+                            console.log('RISPOSTA API', res.data);
+                        })
+                        .catch(err => {
+                            console.log('ERRORE AXIOS', err);
+
+                            this.alert = true;
+                        })
                 }
                 else {
-                    this.alert = true
+                    this.alert = true; 
                 }
             }
         },
