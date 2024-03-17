@@ -25,4 +25,10 @@ import axios from 'axios';
 </template>
 
 <style lang="scss" scoped>
+
+main {
+    
+    height: 100vh;
+
+}
 </style>

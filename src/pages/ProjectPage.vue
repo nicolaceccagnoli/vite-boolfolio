@@ -11,7 +11,7 @@ import { RouterView } from 'vue-router';
                 // Dichiaro il valore della pagina corrente
                 currentPage: 1,
                 // Dichiaro il valore dell'ultima pagina
-                lastPage: 5
+                lastPage: 5,
             };
         },
         components: {
@@ -47,8 +47,10 @@ import { RouterView } from 'vue-router';
                 if (this.currentPage > 1) {
                      this.getProjects(--this.currentPage);
                 }
+            },
+            goToPage(pageNumber) {
+                this.getProjects(pageNumber);
             }
-
         },
         created() {
             this.getProjects(this.currentPage);
@@ -59,39 +61,55 @@ import { RouterView } from 'vue-router';
 
 <template>
 
-    <main>
+    <h1 class="text-center my-3">
+        Tutti i Projects
+    </h1>
 
-        <h1 class="text-center">
-            Tutti i Projects
-        </h1>
+    <div class="row g-0">
+        
+        <ProjectCard v-for="singleProject in projects" :key="singleProject.id" :project="singleProject" />
 
-        <h3>
-            Pagina Corrente: {{ currentPage }} | Ultima pagina: {{ lastPage }}
-        </h3>
-
-        <div class="row g-0 justify-content-around flex-wrap">
-            <ProjectCard v-for="singleProject in projects" :key="singleProject.id" :project="singleProject" />
-        </div>
-
-        <nav>
-
-            <ul class="pagination">
-                <li class="page-item">
-                    <button class="page-link" @click="prevPage()" aria-label="Previous">
+        <nav class="d-flex justify-content-center mt-3">
+            <ul class="my-pagination list-unstyled d-flex">
+                <li class="my-page-item me-3">
+                    <button class="my-page-link" @click="prevPage()" aria-label="Previous">
                         <span aria-hidden="true">&laquo;</span>
                     </button>
                 </li>
-                <li class="page-item">
-                    <button class="page-link" @click="nextPage()" aria-label="Next">
+                <li class="my-page-item">
+                    <button v-for="pageNumber in lastPage" @click="goToPage(pageNumber)" class="my-page-link d-inline-block"
+                    :class="(pageNumber == currentPage) ? 'active' : ''">
+                        <span aria-hidden="true">{{ pageNumber }}</span>
+                    </button>
+                </li>
+                <li class="my-page-item ms-3">
+                    <button class="my-page-link" @click="nextPage()" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </button>
                 </li>
             </ul>
         </nav>
 
-    </main>
-    
+    </div>
+
+
 </template>
 
 <style lang="scss" scoped>
+    nav {
+        ul {
+            li {
+                button {
+                    background-color: white;
+                    border: none;
+                    padding: 16px;
+                    font-weight: bold;
+                }
+
+                & .active{
+                    border-bottom: 2px solid #5649CD;
+                }
+            }
+        }
+    }
 </style>

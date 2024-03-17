@@ -51,6 +51,8 @@
 header {
     background-color: #5649CD;
     padding: 10px 0;
+    position: sticky;
+    top: 0;
 
     .my-container {
         max-width: 1000px;
